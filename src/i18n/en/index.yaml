@@ -1,0 +1,53 @@
+about:
+  introduction: Introduction
+  linkroll: Linkroll
+contents: Contents
+home:
+  heatmap:
+    empty: No words
+    jotting:
+      one: '{count} jotting'
+      other: '{count} jottings'
+    note:
+      one: '{count} note'
+      other: '{count} notes'
+  latest: Latest
+  prefaces: Prefaces
+jotting:
+  empty: No jottings available
+  tag: Tag
+language: English
+navigation:
+  about: About
+  home: Home
+  jotting: Jotting
+  note: Note
+  policy: Policy
+  preface: Preface
+note:
+  empty: No notes available
+  series: Series
+  tag: Tag
+  top: To Top
+read:
+  words:
+    one: '{count} word'
+    other: '{count} words'
+sensitive:
+  back: Return to list
+  continue: I understand, continue reading
+  description: >-
+    This content may contain explicit, violent, bloody, or emotionally
+    triggering material.
+  feed: >
+    <p>This content may contain explicit, violent, bloody, or emotionally
+    triggering material.</p>
+
+    <p>To read, please visit the <a href="{link}">original link</a>.</p>
+  icon: Contains sensitive content
+  title: Content Warning
+  warning: If this content might affect your mental health, please leave immediately!
+statistics:
+  one: Wrote {count} word
+  other: Wrote {count} words
+theme: 'Theme: ThoughtLite'
