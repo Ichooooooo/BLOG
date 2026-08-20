@@ -217,8 +217,8 @@
 	--color-selection: var(--selection-color);
 
 	--font-serif: var(--font-noto-serif);
-	--font-mono: var(--font-maple-mono-nf-cn);
-	--font-cursive: var(--font-playwrite-mx), var(--font-the-peak-font-plus);
+	--font-mono: "Maple Mono NF CN", "Maple Mono NF", "Cascadia Code", "Noto Sans Mono CJK SC", Consolas, Monaco, "Courier New", monospace;
+	--font-cursive: var(--font-playwrite-mx), "STKaiti", "KaiTi", Georgia, serif;
 
 	@keyframes shaky {
 		0% {

@@ -59,8 +59,6 @@ const route = Astro.url.pathname.slice(`/${locale === config.i18n.defaultLocale 
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
 		<Font cssVariable="--font-playwrite-mx" />
-		<Font cssVariable="--font-the-peak-font-plus" />
-		<Font cssVariable="--font-maple-mono-nf-cn" />
 		<Font cssVariable={localedMainFont} />
 
 		<style set:html={`[lang="${locale}"]{--font-serif:var(${localedMainFont})}`}></style>

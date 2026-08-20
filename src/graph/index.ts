@@ -11,6 +11,25 @@ const fonts: Record<string, string> = {
 	ja: "https://raw.githubusercontent.com/adobe-fonts/source-han-serif/release/OTF/Japanese/SourceHanSerif-Bold.otf"
 };
 
+const DOWNLOAD_ATTEMPTS = 3;
+
+async function downloadFont(url: string) {
+	let lastError: unknown;
+
+	for (let attempt = 1; attempt <= DOWNLOAD_ATTEMPTS; attempt += 1) {
+		try {
+			const response = await fetch(url);
+			if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+			return response.arrayBuffer();
+		} catch (error) {
+			lastError = error;
+			if (attempt < DOWNLOAD_ATTEMPTS) await new Promise(resolve => setTimeout(resolve, attempt * 1000));
+		}
+	}
+
+	throw new Error(`Failed to load font from ${url} after ${DOWNLOAD_ATTEMPTS} attempts`, { cause: lastError });
+}
+
 // Ensure cache directory exists
 if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
 
@@ -28,10 +47,7 @@ export async function loadFont(locale: string) {
 
 	if (fs.existsSync(filePath)) return fs.promises.readFile(filePath).then(buffer => buffer.buffer);
 
-	const response = await fetch(url);
-	if (!response.ok) throw new Error(`Failed to load font from ${url}: ${response.status} ${response.statusText}`);
-
-	const buffer = await response.arrayBuffer();
+	const buffer = await downloadFont(url);
 	await fs.promises.writeFile(filePath, new Uint8Array(buffer));
 
 	return buffer;
