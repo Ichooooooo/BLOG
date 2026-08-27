@@ -1,0 +1,28 @@
+import Linkroll from "$components/Linkroll.astro";
+
+export const links = [
+	{
+		title: "Everlasting",
+		url: "https://blog.everlasting.xin/",
+		image: "/everlasting-favicon.svg",
+		type: "technology"
+	},
+	{
+		title: "Scandi",
+		url: "https://docs.scandidreams.top/",
+		image: "/scandi-favicon.svg",
+		type: "technology"
+	},
+	{
+		title: "Jiangse",
+		url: "https://blog.jianges.com/",
+		image: "/jianges-favicon.svg",
+		type: "technology"
+	}
+];
+
+友链：
+
+<Linkroll locale={props.locale} links={links} />
+
+

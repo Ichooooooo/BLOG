@@ -1,30 +1,12 @@
-// Import translation files for different locales
-import en from "./en/index.yaml";
-import enScript from "./en/script.yaml";
-import enLinkroll from "./en/linkroll.yaml";
 import zhCN from "./zh-cn/index.yaml";
 import zhCNScript from "./zh-cn/script.yaml";
 import zhLinkroll from "./zh-cn/linkroll.yaml";
-import ja from "./ja/index.yaml";
-import jaScript from "./ja/script.yaml";
-import jaLinkroll from "./ja/linkroll.yaml";
 
-// Translation object mapping locale codes to their respective translation data
 const translations = {
-	en: {
-		index: en,
-		script: enScript,
-		linkroll: enLinkroll
-	},
 	"zh-cn": {
 		index: zhCN,
 		script: zhCNScript,
 		linkroll: zhLinkroll
-	},
-	ja: {
-		index: ja,
-		script: jaScript,
-		linkroll: jaLinkroll
 	}
 };
 
@@ -36,7 +18,7 @@ type TranslationNamespace = keyof (typeof translations)[Language];
 
 /**
  * Validate if the provided language is supported
- * @param language - The target language/locale code (e.g., "en", "zh-cn", "ja")
+ * @param language - The target language/locale code
  * @throws Error if the language is not supported
  */
 function validateLanguage(language: string): asserts language is Language {
@@ -45,7 +27,7 @@ function validateLanguage(language: string): asserts language is Language {
 
 /**
  * Create an internationalization function for a specific language
- * @param language - The target language/locale code (e.g., "en", "zh-cn", "ja")
+ * @param language - The target language/locale code
  * @param namespace - Optional namespace prefix to prepend to all translation keys (e.g., "script")
  * @returns Translation function that can translate keys with parameter substitution
  */

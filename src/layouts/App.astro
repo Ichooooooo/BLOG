@@ -1,19 +1,10 @@
 ---
 import { Font, type CssVariable } from "astro:assets";
-import { getRelativeLocaleUrl, getAbsoluteLocaleUrl } from "astro:i18n";
-import config from "$config";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { locale, title, subtitle, description, author, article } = Astro.props;
 
-const mainFonts: Record<string, CssVariable> = {
-	en: "--font-noto-serif",
-	"zh-cn": "--font-noto-serif-sc",
-	ja: "--font-noto-serif-jp"
-};
-
-const localedMainFont = mainFonts[locale];
-
-const route = Astro.url.pathname.slice(`/${locale === config.i18n.defaultLocale ? "" : locale}`.length);
+const mainFont: CssVariable = "--font-noto-serif-sc";
 ---
 
 <html lang={locale} dir={["ar", "he", "fa", "ur"].includes(locale) ? "rtl" : "ltr"}>
@@ -59,11 +50,9 @@ const route = Astro.url.pathname.slice(`/${locale === config.i18n.defaultLocale 
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
 		<Font cssVariable="--font-playwrite-mx" />
-		<Font cssVariable={localedMainFont} />
+		<Font cssVariable={mainFont} />
 
-		<style set:html={`[lang="${locale}"]{--font-serif:var(${localedMainFont})}`}></style>
-
-		{config.i18n.locales.map(locale => <link rel="alternate" hreflang={locale} href={getAbsoluteLocaleUrl(locale, route)} />)}
+		<style set:html={`[lang="${locale}"]{--font-serif:var(${mainFont})}`}></style>
 
 		<script is:inline>
 			var theme = localStorage.getItem("theme");

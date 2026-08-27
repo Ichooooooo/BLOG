@@ -216,7 +216,7 @@
 	--color-shadow: var(--shadow-color);
 	--color-selection: var(--selection-color);
 
-	--font-serif: var(--font-noto-serif);
+	--font-serif: var(--font-noto-serif-sc);
 	--font-mono: "Maple Mono NF CN", "Maple Mono NF", "Cascadia Code", "Noto Sans Mono CJK SC", Consolas, Monaco, "Courier New", monospace;
 	--font-cursive: var(--font-playwrite-mx), "STKaiti", "KaiTi", Georgia, serif;
 

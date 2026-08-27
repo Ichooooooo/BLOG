@@ -1,20 +1,20 @@
 import siteConfig from "./src/lib/config";
 
 const config = siteConfig({
-	title: "Icho's Blog",
+	title: "icovo",
 	prologue: "记录学习、折腾与思考。",
 	author: {
-		name: "Ichooooooo",
+		name: "icovo",
 		link: "https://github.com/Ichooooooo"
 	},
-	description: "Ichooooooo 的个人博客，记录计算机科学、Linux 与开发实践。",
+	description: "icovo 的个人博客，记录日常生活，学习",
 	copyright: {
 		type: "CC BY-NC-ND 4.0",
 		year: "2026"
 	},
 	timezone: "Asia/Shanghai",
 	i18n: {
-		locales: ["zh-cn", "en", "ja"],
+		locales: ["zh-cn"],
 		defaultLocale: "zh-cn"
 	},
 	pagination: {

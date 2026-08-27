@@ -1,9 +1,9 @@
 ---
-title: "从数据模型到 AI 总结：Personal Training Dashboard 项目学习笔记"
+title: "个人Todo项目笔记"
 timestamp: 2026-08-20 00:00:00+08:00
 series: 项目学习
-tags: [Python, FastAPI, SQLite, JavaScript, AI, 测试]
-description: 记录 Personal Training Dashboard 从需求分析、数据建模、前后端通信到 AI 总结、自动化测试与工程化的完整学习过程。
+tags: [project]
+description: 记录初次完整接触项目起始的学习笔记
 toc: true
 ---
 
