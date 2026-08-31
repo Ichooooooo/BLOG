@@ -2,7 +2,7 @@ import siteConfig from "./src/lib/config";
 
 const config = siteConfig({
 	title: "icovo",
-	prologue: "记录学习、折腾与思考。",
+	prologue: "Eyes are raining for her \n heart is holding umbrella for her, this is Love",
 	author: {
 		name: "icovo",
 		link: "https://github.com/Ichooooooo"

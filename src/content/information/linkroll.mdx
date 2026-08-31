@@ -1,28 +1,37 @@
 import Linkroll from "$components/Linkroll.astro";
+import BlogInfo from "$components/BlogInfo.astro";
 
 export const links = [
 	{
 		title: "Everlasting",
 		url: "https://blog.everlasting.xin/",
 		image: "/everlasting-favicon.svg",
+		description: "记录编程、学习与生活",
 		type: "technology"
 	},
 	{
 		title: "Scandi",
 		url: "https://docs.scandidreams.top/",
 		image: "/scandi-favicon.svg",
+		description: "scandi的个人博客",
 		type: "technology"
 	},
 	{
 		title: "Jiangse",
 		url: "https://blog.jianges.com/",
 		image: "/jianges-favicon.svg",
+		description: "留此一方素纸，待岁生苔。",
 		type: "technology"
 	}
 ];
 
-友链：
+友链分享：
 
 <Linkroll locale={props.locale} links={links} />
 
-
+<BlogInfo
+	name="icovo blog"
+	description="我能吞下玻璃而不伤身体。"
+	url="https://blog.icovo.workers.dev/"
+	github="https://github.com/Ichooooooo"
+/>

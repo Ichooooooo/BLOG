@@ -36,9 +36,8 @@ import siteConfig from "./site.config";
 
 // https://astro.build/config
 export default defineConfig({
-	// Set SITE_URL to the final production origin in the hosting platform.
-	// The local fallback keeps canonical URLs and sitemap generation valid during development.
-	site: process.env.SITE_URL ?? process.env.CF_PAGES_URL ?? "http://localhost:4321",
+	// Override SITE_URL when switching to a custom domain.
+	site: process.env.SITE_URL ?? "https://blog.icovo.workers.dev",
 	trailingSlash: "never",
 	i18n: {
 		...siteConfig.i18n,

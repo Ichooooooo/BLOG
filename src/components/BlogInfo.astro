@@ -1,0 +1,146 @@
+---
+interface Props {
+	name: string;
+	description: string;
+	url: string;
+	github: string;
+}
+
+const { name, description, url, github } = Astro.props;
+---
+
+<section class="blog-info" aria-labelledby="blog-info-title">
+	<div class="heading-row">
+		<p id="blog-info-title">本站信息（点击即可复制）：</p>
+		<span class="copy-status" aria-live="polite">分别点击复制</span>
+	</div>
+
+	<div class="info-card">
+		<button class="info-row" type="button" data-blog-info-copy data-copy-text={name} data-copy-label="名称" aria-label={`复制名称：${name}`}>
+			<strong>名称：</strong><code>{name}</code>
+		</button>
+		<button class="info-row" type="button" data-blog-info-copy data-copy-text={description} data-copy-label="简介" aria-label={`复制简介：${description}`}>
+			<strong>简介：</strong><span class="description">{description}</span>
+		</button>
+		<button class="info-row" type="button" data-blog-info-copy data-copy-text={url} data-copy-label="链接" aria-label={`复制链接：${url}`}>
+			<strong>链接：</strong><code>{url}</code>
+		</button>
+	</div>
+
+	<p class="github-row">
+		<span>GitHub：</span>
+		<a href={github} target="_blank" rel="noopener noreferrer" class="after:hidden">{github.replace("https://", "")}</a>
+	</p>
+</section>
+
+<style>
+	.blog-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+		margin-top: 1.75rem;
+	}
+
+	.heading-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.copy-status {
+		flex: none;
+		color: var(--secondary-color);
+		font-size: 0.75rem;
+		transition: color 0.15s ease-in-out;
+	}
+
+	.copy-status[data-copied="true"] {
+		color: var(--primary-color);
+	}
+
+	.info-card {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		border-inline-start: 4px solid var(--shadow-color);
+		padding: 0.45rem 0;
+		transition: border-color 0.15s ease-in-out;
+	}
+
+	.info-card:focus-within,
+	.info-card:hover {
+		border-color: var(--primary-color);
+	}
+
+	.info-row {
+		display: grid;
+		grid-template-columns: 3.5rem minmax(0, 1fr);
+		align-items: baseline;
+		gap: 0.25rem;
+		width: 100%;
+		padding: 0.35rem 1rem;
+		text-align: start;
+		transition: background-color 0.15s ease-in-out;
+	}
+
+	.info-row:hover,
+	.info-row:focus-visible {
+		background-color: var(--block-color);
+		outline: none;
+	}
+
+	.info-row strong {
+		font-weight: 400;
+	}
+
+	.info-row code {
+		padding: 0;
+		overflow-wrap: anywhere;
+		color: inherit;
+		background: none;
+		font-size: 0.9em;
+	}
+
+	.description {
+		color: var(--secondary-color);
+	}
+
+	.github-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		font-size: 0.9rem;
+	}
+</style>
+
+<script>
+	function initializeBlogInfoCopy() {
+		document.querySelectorAll<HTMLButtonElement>("[data-blog-info-copy]").forEach(button => {
+			if (button.dataset.copyReady === "true") return;
+			button.dataset.copyReady = "true";
+
+			button.addEventListener("click", async () => {
+				const status = button.closest(".blog-info")?.querySelector<HTMLElement>(".copy-status");
+				const text = button.dataset.copyText;
+				const label = button.dataset.copyLabel;
+				if (!text || !status) return;
+
+				try {
+					await navigator.clipboard.writeText(text);
+					status.textContent = `${label ?? "内容"}已复制`;
+					status.dataset.copied = "true";
+					window.setTimeout(() => {
+						status.textContent = "分别点击复制";
+						delete status.dataset.copied;
+					}, 1600);
+				} catch {
+					status.textContent = "复制失败";
+				}
+			});
+		});
+	}
+
+	initializeBlogInfoCopy();
+	document.addEventListener("astro:page-load", initializeBlogInfoCopy);
+</script>

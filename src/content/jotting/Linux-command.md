@@ -1,10 +1,8 @@
 ---
 title: Linux 命令备忘录
 timestamp: 2026-08-19 22:38:38+08:00
-series: Linux
 tags: [Linux, EndeavourOS, Arch Linux, Git, Shell]
 description: 面向 EndeavourOS / Arch Linux 日常使用的命令备忘，涵盖文件、搜索、Git、软件包、历史记录与归档操作。
-toc: true
 ---
 
 ## 基础命令
@@ -19,7 +17,7 @@ cp -r 原目录 新目录 # 复制目录。
 mv "old folder" "new folder"  # 移动或重命名。带空格的文件名加引号
 ls -la ~  # 查看所有文件
 . # 表示当前目录
-rm 文件名 # 删除文件    
+rm 文件名 # 删除文件
 rm -r 目录名 #删除目录, -r递归删除目录及里面所有文件
 trash # 移动到回收站
 grep "关键词" 文件名  # 在文件中查找文字。
@@ -33,7 +31,7 @@ kill -9 49153 # 强制杀死进程
 ```
 ## nano中
 ```bash
-Ctrl+Shift+6  # 启动选择模式 
+Ctrl+Shift+6  # 启动选择模式
 
 ```
 
@@ -111,7 +109,7 @@ code -m Temp # 打开vscode并打开Temp
 ```bash
 # 下载
 yay -Ss qq  #查找
-yay -S linuxqq #下载 
+yay -S linuxqq #下载
 
 # 查找
 pacman -Qs 关键词  # 确定包名
