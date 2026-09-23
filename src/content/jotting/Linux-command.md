@@ -1,8 +1,8 @@
 ---
 title: Linux 命令备忘录
 timestamp: 2026-08-19 22:38:38+08:00
-tags: [Linux, EndeavourOS, Arch Linux, Git, Shell]
-description: 面向 EndeavourOS / Arch Linux 日常使用的命令备忘，涵盖文件、搜索、Git、软件包、历史记录与归档操作。
+tags: [Linux, EndeavourOS, Arch Linux, WSL, Shell]
+description: 面向 Linux 日常使用的命令备忘，涵盖文件、搜索、软件包、历史记录、归档与 WSL 操作。
 ---
 
 ## 基础命令
@@ -28,11 +28,11 @@ ss -ltnp | grep ':8000' # 查找进程
 ps -o pid,ppid,stat,cmd -p 49153,49157 # 看清楚关系
 kill 49153 # 杀死进程
 kill -9 49153 # 强制杀死进程
+rm -rf ~/.cache/* #删除缓存
 ```
-## nano中
+## nano
 ```bash
 Ctrl+Shift+6  # 启动选择模式
-
 ```
 
 ## find
@@ -74,37 +74,14 @@ rg "daily-reviews" backend  # 只在 backend 目录里搜索 daily-reviews
 rg -g "*.py" "BaseModel"  # 只在 .py 文件中搜索 BaseModel
 ```
 
-## 项目命令
+## python
 
 ```bash
 source .venv/bin/activate # 启动虚拟py环境, 原理是修改PATH
 deactivate # 退出环境
 ```
 
-## GIT命令
-
-```bash
-git diff # 显示改变的地方
-空格       下一页
-b          上一页
-↑ / ↓      上下滚动
-/关键词     搜索
-n          下一个搜索结果
-q          退出
-
-git diff --stat # 更简洁的展现
-
-git rm --cached 文件名 #想让一个已经跟踪的文件以后真正不再跟踪
---cached # 表示只从 Git 的暂存区和跟踪记录中删除，保留你硬盘上的实际文件。
-
-\   # 在命令行最后加上反斜杠表示命令还没结束
-    # 其中单引号时候命令行未结束可以直接 Enter 换行
-    # \ 必须是行尾最后一个字符，后面不能有空格
-
-code -m Temp # 打开vscode并打开Temp
-```
-
-## 下载安装命令
+## download / update 命令
 
 ```bash
 # 下载
@@ -183,4 +160,15 @@ tar -xzf project.tar.gz -C extracted/  # -C, 解压到指定目录
 ```bash
 uname -r
 ls /usr/lib/modules/
+```
+
+## WSL-Ubuntu命令
+
+```bash
+wsl --update  # 更新wsl版本
+
+sudo apt update && sudo apt upgrade -y	# 更新“软件包列表”并把已经安装的软件升级到新版本
+sudo apt autoremove -y 	# 再清一下不需要的依赖
+
+source ~/.zshrc # 将配置文件重新加载
 ```
